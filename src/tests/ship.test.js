@@ -1,14 +1,14 @@
 const ship = require("../objects/ship.js")
 
-const NewShip = new ship(3,[2,4]);
-const destroyedShip = new ship(2,[1,2])
+const NewShip = new ship(3, "battleship");
+const destroyedShip = new ship(2, "submarine")
 
 test("Ship Lenght", () => {
     expect(NewShip.length).toBe(3);
 })
 
-test("Position", () => {
-    expect(NewShip.position).toEqual([2,4])
+test("Ship has a name", () => {
+    expect(NewShip.name).toBe("battleship")
 })
 
 test("Ship is still ingame", () => {
