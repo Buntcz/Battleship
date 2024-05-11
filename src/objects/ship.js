@@ -9,9 +9,9 @@ class Ship {
     }
     shipDestroyed() {
         if(this.hits === this.length) {
-            return "Ship is destroyed"
-        } else {
-            return "Ship is still in the game"
+            return true
+        } else if(this.hits !== this.length) {
+            return false
         }
     }
 }
