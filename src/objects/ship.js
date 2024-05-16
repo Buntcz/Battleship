@@ -4,10 +4,10 @@ class Ship {
         this.name = name
         this.hits = hits
     }
-    isHit() {
+    hit() {
         this.hits++;
     }
-    shipDestroyed() {
+    isDestroyed() {
         if(this.hits === this.length) {
             return true
         } else if(this.hits !== this.length) {
