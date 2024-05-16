@@ -1,4 +1,4 @@
-const ship = require("../objects/ship.js")
+import ship from "../objects/ship.js"
 
 const NewShip = new ship(3, "battleship");
 const destroyedShip = new ship(2, "submarine")

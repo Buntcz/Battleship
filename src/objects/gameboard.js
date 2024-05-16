@@ -1,6 +1,6 @@
-const Ship = require("../objects/ship");
+ import Ship from "./ship"
 
-class GameBoard {
+export default class GameBoard {
  constructor() {
     this.gameboard = this.createBoard(10);
     this.shipsArray = [
@@ -25,7 +25,11 @@ class GameBoard {
         coordPairs: []
       }
     ]
-  
+  this.hitCoords = {
+    missedHits: [],
+    shipHits: [],
+  };
+  this.allSunk = false;
  }
   
  createBoard(size) {
@@ -34,7 +38,7 @@ class GameBoard {
    for(let i = 0; i < size; i++) {
     board[i] = [];
     for(let j = 0; j < size; j++) {
-        board[i][j] = 0;
+        board[i][j] = '0';
     }
    }
    return board;
@@ -42,8 +46,8 @@ class GameBoard {
  placeShip(ship,positionX, positionY, direction) {
   if(direction === "H") {
     let columnValid =  true;
-    for(let i = positionX; i < positionX + positionY; i++) {
-      if(this.board[i][positionY] !== 0 || positionX + ship > 10) {
+    for(let i = positionX; i < positionX + ship; i++) {
+      if(this.board[i][positionY] !== "0" || positionX + ship > 10) {
         columnValid = false;
         break;
       }
@@ -76,12 +80,79 @@ class GameBoard {
         }
         return this.board
       }
-      if(ship === 4) {
-        
+      if(ship === 4 && this.shipsArray[3].coordPairs.length === 0) {
+        while(ship !== 0) {
+          this.shipsArray[3].coordPairs.push({positionX, positionY})
+          this.board[positionX][positionY] = "H"
+          positionX++
+          ship--
+        }
+        return this.board
+      }
+      if(ship === 5 && this.shipsArray[4].coordPairs.length === 0) {
+        while(ship !== 0) {
+          this.shipsArray[4].coordPairs.push({positionX, positionY})
+          this.board[positionX][positionY] = "H"
+          positionX++
+          ship--
+        }
+      }
+    }
+  } else if(direction = "V") {
+    let rowValid =  true;
+    for(let j = positionY; j < positionY + ship; j++) {
+      if(this.board[positionX][j] !== "0" || positionY + ship > 10 ) {
+        rowValid = false
+        break
+      }
+    }
+    if(rowValid) {
+      if(ship === 1 && this.shipsArray[0].coordPairs.length === 0) {
+        while(ship !== 0) {
+          this.shipsArray[0].coordPairs.push({positionX,positionY})
+          this.board[positionX][positionY] = "V"
+          positionY++
+          ship--
+        }
+        return this.board
+      }
+      if(ship === 2 && this.shipsArray[1].coordPairs.length === 0) {
+        while(ship !== 0) {
+          this.shipsArray[1].coordPairs.push({positionX,positionY});
+          this.board[positionX][positionY] = "V"
+          positionY++
+          ship--
+        }
+        return this.board;
+      }
+      if(ship === 3 && this.shipsArray[2].coordPairs.length === 0) {
+        while(ship !== 0) {
+          this.shipsArray[2].coordPairs.push({positionX,positionY});
+          this.board[positionX][positionY] = "V"
+          positionY++
+          ship--
+        }
+        return this.board
+      }
+      if(ship === 4 && this.shipsArray[3].coordPairs.length === 0) {
+        while(ship !== 0) {
+          this.shipsArray[3].coordPairs.push({positionX,positionY})
+          this.board[positionX][positionY] = "V"
+          positionY++
+          ship--
+        }
+        return this.board
+      }
+      if(ship === 5 && this.shipsArray[4].coordPairs.length === 0 ) {
+        while(ship !== 0) {
+          this.shipsArray[4].coordPairs.push({positionX,positionY})
+          this.board[positionX][positionY] = "V"
+          positionY++
+          ship--
+        }
+        return this.board
       }
     }
   }
  }
 }
-
-module.exports = GameBoard;
