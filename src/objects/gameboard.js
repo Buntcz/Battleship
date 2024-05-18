@@ -155,4 +155,8 @@ export default class GameBoard {
     }
   }
  }
+  shotFired(coordX, coordY) {
+   
+  }
+
 }
