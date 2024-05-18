@@ -2,7 +2,7 @@
 
 export default class GameBoard {
  constructor() {
-    this.gameboard = this.createBoard(10);
+    this.board = this.createBoard(10);
     this.shipsArray = [
       {
         ship1: new Ship("Patrol Boat", 1),
@@ -38,7 +38,7 @@ export default class GameBoard {
    for(let i = 0; i < size; i++) {
     board[i] = [];
     for(let j = 0; j < size; j++) {
-        board[i][j] = '0';
+        board[i][j] = 'o';
     }
    }
    return board;
@@ -47,7 +47,7 @@ export default class GameBoard {
   if(direction === "H") {
     let columnValid =  true;
     for(let i = positionX; i < positionX + ship; i++) {
-      if(this.board[i][positionY] !== "0" || positionX + ship > 10) {
+      if(this.board[i][positionY] !== "o" || positionX + ship > 10) {
         columnValid = false;
         break;
       }
@@ -101,7 +101,7 @@ export default class GameBoard {
   } else if(direction = "V") {
     let rowValid =  true;
     for(let j = positionY; j < positionY + ship; j++) {
-      if(this.board[positionX][j] !== "0" || positionY + ship > 10 ) {
+      if(this.board[positionX][j] !== "o" || positionY + ship > 10 ) {
         rowValid = false
         break
       }
