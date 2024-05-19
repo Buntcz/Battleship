@@ -12,12 +12,14 @@ test("Ship has a name", () => {
 })
 
 test("Ship is still ingame", () => {
-    expect(NewShip.isDestroyed()).toBe(false)
+    
+    expect(NewShip.sunk).toBe(false)
 })
 
 destroyedShip.hit();
 destroyedShip.hit();
 
 test("Ship is destroyed", () => {
-    expect(destroyedShip.isDestroyed()).toBe(true)
+    destroyedShip.isDestroyed()
+    expect(destroyedShip.sunk).toBe(true)
 })

@@ -3,15 +3,16 @@ export default class Ship {
         this.length = length;
         this.name = name
         this.hits = hits
+        this.sunk = false;
     }
     hit() {
         this.hits++;
     }
     isDestroyed() {
         if(this.hits === this.length) {
-            return true
+            this.sunk = true
         } else if(this.hits !== this.length) {
-            return false
+            this.sunk = false;
         }
     }
 }

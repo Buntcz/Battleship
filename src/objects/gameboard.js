@@ -5,23 +5,23 @@ export default class GameBoard {
     this.board = this.createBoard(10);
     this.shipsArray = [
       {
-        ship1: new Ship("Patrol Boat", 1),
+        ship: new Ship("Patrol Boat", 1),
         coordPairs: []
       },
       {
-        ship2: new Ship("Submarine", 2),
+        ship: new Ship("Submarine", 2),
         coordPairs: []
       },
       {
-        ship3: new Ship("Destroyer", 3),
+        ship: new Ship("Destroyer", 3),
         coordPairs: []
       },
       {
-        ship4: new Ship("Battleship", 4),
+        ship: new Ship("Battleship", 4),
         coordPairs: []
       },
       {
-        ship5: new Ship("Carrier", 5),
+        ship: new Ship("Carrier", 5),
         coordPairs: []
       }
     ]
@@ -156,7 +156,46 @@ export default class GameBoard {
   }
  }
   shotFired(coordX, coordY) {
-   
+   let allowedToHit = false;
+   let shipHit = false;
+   if(this.board[coordX][coordY] !== "x" && this.board[coordX][coordY] !== "X") {
+    allowedToHit = true;
+   }
+   this.shipsArray.forEach((singleShip) => {
+    for(let i = 0; i < singleShip.coordPairs.length; i++) {
+      if( 
+        singleShip.coordPairs[i].positionX == coordX &&
+        singleShip.coordPairs[i].positionY == coordY
+      ) {
+        shipHit = true;
+        singleShip.ship.hit();
+        singleShip.ship.isDestroyed();
+        this.checkIfAllDestroyed();
+      }
+    }
+   });
+   if(shipHit && allowedToHit) {
+    this.board[coordX][coordY] = "X"
+    this.hitCoords.shipHits.push({coordX, coordY})
+   }
+   if(!shipHit && allowedToHit) {
+    this.board[coordX][coordY] = "x";
+    this.hitCoords.missedHits.push({coordX, coordY})
+   }
   }
-
+   checkIfAllDestroyed() {
+    let allSunk = true;
+    for(let i = 0; i < this.shipsArray.length; i++) {
+      let existingShips = this.shipsArray[i].coordPairs.length;
+      if(existingShips > 0) {
+        if(this.shipsArray[i].ship.sunk === false) {
+          allSunk = false
+          break;
+        }
+      }
+    } 
+     if(allSunk) {
+   this.allSunk = true;
+     }
+   }
 }

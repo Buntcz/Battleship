@@ -108,10 +108,11 @@ test("Can't place already placed ship", () => {
 })
 
 test("Check if a ship has been hit", () => {
-    testBoard.shotFired(6,0);
-    expect(testBoard.board).toStrictEqual(
+    testBoard.shotFired(0,5);
+    testBoard.shotFired(0,0)
+    expect(testBoard.board).toEqual(
         [
-            ["o","o","o","o","o","X","V","V","V","V"],
+            ["x","o","o","o","o","X","V","V","V","V"],
             ["o","o","o","o","o","H","o","o","o","o"],
             ["o","o","o","o","o","H","o","o","o","o"],
             ["o","o","o","o","o","H","o","o","o","o"],
@@ -123,4 +124,15 @@ test("Check if a ship has been hit", () => {
             ["o","o","o","o","o","o","o","o","o","o"]
             ]
     )
+})
+
+test("check if it stored the hit in the variable", () => {
+    let testShip = testBoard.shipsArray[4].ship
+    expect(testShip.hits).toBe(1)
+})
+
+test("it should return true if a ship has been sunk", () => {
+    testBoard.placeShip(1,1,1,"V");
+    testBoard.shotFired(1,1);
+    expect(testBoard.shipsArray[0].ship.sunk).toBeTruthy();
 })
