@@ -6,13 +6,15 @@ export default class Ship {
         this.sunk = false;
     }
     hit() {
-        this.hits++;
+        if(this.hits === this.length){
+            return
+        } else this.hits++
     }
     isDestroyed() {
         if(this.hits === this.length) {
-            this.sunk = true
-        } else if(this.hits !== this.length) {
-            this.sunk = false;
+           return (this.sunk = true)
+        } else {
+           return (this.sunk = false)
         }
     }
 }

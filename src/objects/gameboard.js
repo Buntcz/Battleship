@@ -5,30 +5,30 @@ export default class GameBoard {
     this.board = this.createBoard(10);
     this.shipsArray = [
       {
-        ship: new Ship("Patrol Boat", 1),
+        ship: new Ship(1,"Patrol Boat"),
         coordPairs: []
       },
       {
-        ship: new Ship("Submarine", 2),
+        ship: new Ship(2,"Submarine"),
         coordPairs: []
       },
       {
-        ship: new Ship("Destroyer", 3),
+        ship: new Ship(3,"Destroyer"),
         coordPairs: []
       },
       {
-        ship: new Ship("Battleship", 4),
+        ship: new Ship(4,"Battleship"),
         coordPairs: []
       },
       {
-        ship: new Ship("Carrier", 5),
+        ship: new Ship(5,"Carrier"),
         coordPairs: []
       }
     ]
   this.hitCoords = {
-    missedHits: [],
-    shipHits: [],
-  };
+    missedHits: [ ],
+    shipHits: [ ],
+  }
   this.allSunk = false;
  }
   
@@ -98,7 +98,7 @@ export default class GameBoard {
         }
       }
     }
-  } else if(direction = "V") {
+  } else if(direction === "V") {
     let rowValid =  true;
     for(let j = positionY; j < positionY + ship; j++) {
       if(this.board[positionX][j] !== "o" || positionY + ship > 10 ) {
@@ -158,7 +158,7 @@ export default class GameBoard {
   shotFired(coordX, coordY) {
    let allowedToHit = false;
    let shipHit = false;
-   if(this.board[coordX][coordY] !== "x" && this.board[coordX][coordY] !== "X") {
+   if(this.board[coordX][coordY] !== "x" && this.board[coordX][coordY] !== "sx") {
     allowedToHit = true;
    }
    this.shipsArray.forEach((singleShip) => {
@@ -175,12 +175,12 @@ export default class GameBoard {
     }
    });
    if(shipHit && allowedToHit) {
-    this.board[coordX][coordY] = "X"
-    this.hitCoords.shipHits.push({coordX, coordY})
+    this.board[coordX][coordY] = "sx"
+    this.hitCoords.shipHits.push({coordX,coordY})
    }
    if(!shipHit && allowedToHit) {
     this.board[coordX][coordY] = "x";
-    this.hitCoords.missedHits.push({coordX, coordY})
+    this.hitCoords.missedHits.push({coordX,coordY})
    }
   }
    checkIfAllDestroyed() {

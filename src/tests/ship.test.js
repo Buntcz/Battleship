@@ -21,5 +21,5 @@ destroyedShip.hit();
 
 test("Ship is destroyed", () => {
     destroyedShip.isDestroyed()
-    expect(destroyedShip.sunk).toBe(true)
+    expect(destroyedShip.sunk).toBeTruthy();
 })

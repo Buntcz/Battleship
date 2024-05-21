@@ -112,7 +112,7 @@ test("Check if a ship has been hit", () => {
     testBoard.shotFired(0,0)
     expect(testBoard.board).toEqual(
         [
-            ["x","o","o","o","o","X","V","V","V","V"],
+            ["x","o","o","o","o","sx","V","V","V","V"],
             ["o","o","o","o","o","H","o","o","o","o"],
             ["o","o","o","o","o","H","o","o","o","o"],
             ["o","o","o","o","o","H","o","o","o","o"],
@@ -131,8 +131,28 @@ test("check if it stored the hit in the variable", () => {
     expect(testShip.hits).toBe(1)
 })
 
-test("it should return true if a ship has been sunk", () => {
-    testBoard.placeShip(1,1,1,"V");
+test("check if coordinates are saved inside the their right place.", () => {
+    let missedHits = testBoard.hitCoords.missedHits;
+    let shipHits = testBoard.hitCoords.shipHits;
+    expect(missedHits).toEqual([{coordX:0,coordY:0}])
+    expect(shipHits).toEqual([{coordX:0,coordY:5}])
+})
+
+
+   test("it should return true if a ship has been sunk", () => {
+    testBoard.placeShip(2,1,1,"H");
     testBoard.shotFired(1,1);
-    expect(testBoard.shipsArray[0].ship.sunk).toBeTruthy();
+    testBoard.shotFired(2,1);
+    expect(testBoard.shipsArray[1].ship.sunk).toBeTruthy();
+})
+
+test("It should return a true statement when all ships are sunk", () => {
+    testBoard.shotFired(0,6);
+    testBoard.shotFired(0,7);
+    testBoard.shotFired(0,8);
+    testBoard.shotFired(0,9);
+    testBoard.shotFired(1,5);
+    testBoard.shotFired(2,5);
+    testBoard.shotFired(3,5);
+    expect(testBoard.allSunk).toBeTruthy();
 })
