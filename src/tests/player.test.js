@@ -33,3 +33,8 @@ test("It should throw attacks into an enemy's board", () => {
      player1.shoot(player2,0,5);
      expect(player2.playerBoard.board[0][5]).not.toEqual("o")
 })
+
+test("check if It record the missed hits here, because of a bug probability in computer", () => {
+    let missHits = player2.playerBoard.hitCoords.missedHits;
+    expect(missHits.length).toBe(1)
+})
