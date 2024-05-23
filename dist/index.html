@@ -6,6 +6,119 @@
     <title>BattleShip Game</title>
 </head>
 <body>
-    
+    <div class="modal hide-on-mobile">
+        <div class="accent">Game Instructions</div>
+        <div>1. Select each ship and place it on your board</div>
+        <div>2. It will turn grey when it was placed correctly.</div>
+        <div>3. Press the red button to change direction</div>
+        <div>4. Attack and defeat the enmy board.</div>
+        <div class="accent">Good Luck!</div>
+    </div>
+    <div class="modal-mobile">
+        <div class="accent">Game Instructions</div>
+        <div>1. Select each ship and place it on your board</div>
+        <div>2. It will turn grey when it was placed correctly.</div>
+        <div>3. Press the red button to change direction</div>
+        <div>4. Attack and defeat the enmy board.</div>
+        <div class="accent">Good Luck!</div>
+        <button class="close-modal">OK</button>
+    </div>
+    <nav class="navbar">
+        <div class="info-panel">
+            <div class="place-ships-info">How to Play?</div>
+            <div class="can-start">Defeat the Enemy!</div>
+            <div class="winner"></div>
+        </div>
+        <div class="new-game-wrapper">
+            <div class="info-panel new-game">New Game</div>
+        </div>
+    </nav>
+    <main class="content">
+        <div class="bottom-side-wrapper">
+            <div class="player-board">
+                <div class="numbers-column">
+                    <div class="number">1</div>
+                    <div class="number">2</div>
+                    <div class="number">3</div>
+                    <div class="number">4</div>
+                    <div class="number">5</div>
+                    <div class="number">6</div>
+                    <div class="number">7</div>
+                    <div class="number">8</div>
+                    <div class="number">9</div>
+                    <div class="number">10</div>
+                </div>
+                <div class="js-player-board">
+                    <div class="letters-row">
+                        <div class="letter">A</div>
+                        <div class="letter">B</div>
+                        <div class="letter">C</div>
+                        <div class="letter">D</div>
+                        <div class="letter">E</div>
+                        <div class="letter">F</div>
+                        <div class="letter">J</div>
+                        <div class="letter">H</div>
+                        <div class="letter">I</div>
+                        <div class="letter">J</div>
+                    </div>
+                    <div class="player-array gameboard"></div>
+
+                </div>
+                <div class="player-panel">
+                    <div class="player-ships">
+                        <div class="player-carrier length-selector" id="5"></div>
+                        <div class="player-battleship length-selector" id="4"></div>
+                        <div class="player-destroyer length-selector" id="3"></div>
+                        <div class="player-submarine length-selector" id="2"></div>
+                        <div class="player-patrol-boat length-selector" id="1"></div>
+                    </div>
+                    <div class="player-control">
+                        <div class="player-name">Your Board</div>
+                        <div class="player-direction">V</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="computer-board hide-on-mobile">
+            <div class="numbers-column">
+                <div class="number">1</div>
+                <div class="number">2</div>
+                <div class="number">3</div>
+                <div class="number">4</div>
+                <div class="number">5</div>
+                <div class="number">6</div>
+                <div class="number">7</div>
+                <div class="number">8</div>
+                <div class="number">9</div>
+                <div class="number">10</div>
+            </div>
+            <div class="js-computer-board">
+                <div class="letters-row">
+                    <div class="letter">A</div>
+                    <div class="letter">B</div>
+                    <div class="letter">C</div>
+                    <div class="letter">D</div>
+                    <div class="letter">E</div>
+                    <div class="letter">F</div>
+                    <div class="letter">J</div>
+                    <div class="letter">H</div>
+                    <div class="letter">I</div>
+                    <div class="letter">J</div>
+                </div>
+                <div class="computer-array gameboard unclickable"></div>
+                <div class="player-ships">
+                    <div class="player-carrier length-selector" id="5"></div>
+                    <div class="player-battleship length-selector" id="4"></div>
+                    <div class="player-destroyer length-selector" id="3"></div>
+                    <div class="player-submarine length-selector" id="2"></div>
+                    <div class="player-patrol-boat length-selector" id="1"></div>
+                </div>
+                <div class="player-control">
+                    <div class="player-name">Computer</div>
+                    <div class="player-direction">?</div>
+                </div>
+            </div>
+        </div>
+    </main>
 <script defer src="main.js"></script></body>
 </html>
