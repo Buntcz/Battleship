@@ -1,0 +1,84 @@
+:root {
+    --primary-blue: #181823;
+    --primary-purple: #4a4182;
+    --primary-pink: #f2dede;
+    --primary-red: #964848;
+    --nautical-blue: #1a5091;
+}
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--primary-purple);
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    background-color: var(--primary-blue); 
+    height: 10vh;
+}
+
+.modal {
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 10%;
+    left: 30%;
+    max-width: 40%;
+    background-color: var(--primary-pink);
+    padding: 1em;
+    gap: 1em;
+    border-radius: 5px;
+}
+
+.modal-mobile {
+    display: none;
+}
+
+.accent {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--nautical-blue);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 100px;
+    min-height: 85vh;
+}
+
+.new-game {
+    cursor: pointer;
+    transition: all ease-in 0.2s;
+}
+
+.new-game:hover {
+    transform: scale(1.05);
+}
+.info-panel {
+    font-size: 24px;
+    color: var(--primary-pink);
+}
+.bottom-side-wrapper {
+    display: flex;
+    justify-self: center;
+    gap: 100px;
+}
+.player-board,
+.numbers-column,
+.letters-row,
+.computer-board {
+    display: flex;
+}
