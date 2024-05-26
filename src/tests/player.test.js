@@ -1,4 +1,4 @@
-import Player from "../objects/player";
+import Player from "../objects/player.js";
 
 let player1 = new Player("player1");
 let player2 = new Player("player1")

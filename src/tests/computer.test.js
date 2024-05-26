@@ -1,6 +1,6 @@
 
-import Computer from "../objects/computer";
-import Player from "../objects/player";
+import Computer from "../objects/computer.js";
+import Player from "../objects/player.js";
 
 let computerPlayer = new Computer("AI");
 let enemyPlayer = new Player("enemy")

@@ -14,6 +14,13 @@ module.exports = {
         test: /\.css$/i,
         use:['style-loader','css-loader'],
         },
+        {
+          test: /\.[jt]sx?$/,
+          loader: 'esbuild-loader',
+          options: {
+            target: 'es2015'
+          }
+        },
       ],
     },
     plugins: [

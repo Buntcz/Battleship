@@ -1,4 +1,4 @@
-import gameBoard from "../objects/gameboard";
+import gameBoard from "../objects/gameboard.js";
 
 let testBoard = new gameBoard;
 
